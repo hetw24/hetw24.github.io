@@ -18,5 +18,27 @@
   
   
     
+    
+    <entry>
+      <title></title>
+      <link href="/js/aplayer.js"/>
+      <url>/js/aplayer.js</url>
+      
+        <content type="html"><![CDATA[document.addEventListener('DOMContentLoaded', async () => {  const container = document.createElement('div')  container.id = 'aplayer'  document.body.appendChild(container)  const ap = new APlayer({    container,    fixed: true,    mini: true,    autoplay: false,    loop: 'all',    order: 'list',    preload: 'auto',    volume: 0.7,    mutex: true,    audio: []  })  try {    const response = await fetch(      'https://api.sighproxy.dpdns.org/api?server=netease&type=playlist&id=17523884381'    )    const data = await response.json()    console.log('Meting API:', data)    const songs = Array.isArray(data)      ? data      : data.data || data.songs || data.result?.songs || []    const audio = songs.map(song => ({      name: song.name || song.title || song.songName || '未知歌曲',      artist:        song.artist ||        song.author ||        song.ar?.map(a => a.name).join(' / ') ||        song.artists?.map(a => a.name).join(' / ') ||        '未知歌手',      url: song.url || song.audio || song.mp3 || '',      cover:        song.pic ||        song.picUrl ||        song.cover ||        song.coverUrl ||        ''    })).filter(song => song.url)    if (!audio.length) {      throw new Error('没有获取到可播放歌曲')    }    ap.list.add(audio)  } catch (error) {    console.error('网易云歌单加载失败:', error)  }})]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/aplayer.css"/>
+      <url>/css/aplayer.css</url>
+      
+        <content type="html"><![CDATA[.aplayer.aplayer-fixed {  z-index: 9999;}@media screen and (max-width: 768px) {  .aplayer.aplayer-fixed {    width: 100%;    left: 0;    bottom: 0;  }  .aplayer.aplayer-fixed .aplayer-body {    width: 100%;  }  .aplayer.aplayer-fixed .aplayer-pic {    width: 50px;    height: 50px;  }  .aplayer.aplayer-fixed .aplayer-info {    height: 50px;  }  .aplayer.aplayer-fixed .aplayer-lrc {    display: none;  }  .aplayer.aplayer-fixed .aplayer-music {    margin: 0 5px;  }}]]></content>
+      
+    </entry>
+    
+    
   
 </search>
