@@ -29,16 +29,5 @@
     </entry>
     
     
-    
-    <entry>
-      <title></title>
-      <link href="/css/aplayer.css"/>
-      <url>/css/aplayer.css</url>
-      
-        <content type="html"><![CDATA[.aplayer.aplayer-fixed {  z-index: 9999;}@media screen and (max-width: 768px) {  .aplayer.aplayer-fixed {    width: 100%;    left: 0;    bottom: 0;  }  .aplayer.aplayer-fixed .aplayer-body {    width: 100%;  }  .aplayer.aplayer-fixed .aplayer-pic {    width: 50px;    height: 50px;  }  .aplayer.aplayer-fixed .aplayer-info {    height: 50px;  }  .aplayer.aplayer-fixed .aplayer-lrc {    display: none;  }  .aplayer.aplayer-fixed .aplayer-music {    margin: 0 5px;  }}]]></content>
-      
-    </entry>
-    
-    
   
 </search>
